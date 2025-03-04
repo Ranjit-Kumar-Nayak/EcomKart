@@ -8,6 +8,7 @@ public class EcomKartApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(EcomKartApplication.class, args);
+
 	}
 
 }
