@@ -1,12 +1,20 @@
 package com.ranjit.EcomKart.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.ranjit.EcomKart.domain.USER_ROLE;
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,7 +28,18 @@ public class User {
 
     private String mobile;
 
-    private  String role;
+
+    private USER_ROLE role=USER_ROLE.ROLE_CUSTOMER;
+
+    @OneToMany
+    private Set<Address> addresses= new HashSet<>();
+
+//     this is used for keep tracking about the coupon used by USER
+
+    @ManyToMany
+    @JsonIgnore  // this means when we fetch user coupon will not show
+    private Set<Coupon> usedCoupons= new HashSet<>();
+
 
 
 }
