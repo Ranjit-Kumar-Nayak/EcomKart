@@ -27,9 +27,9 @@ public class Seller {
     private String email;
 
     private String password;
-
+    @Embedded
     private BusinessDetails businessDetails= new BusinessDetails();
-
+    @Embedded
     private BankDetails bankDetails= new BankDetails();
     @OneToOne(cascade = CascadeType.ALL)
     private Address pickupAddress= new Address();

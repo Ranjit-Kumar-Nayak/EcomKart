@@ -1,6 +1,5 @@
 package com.ranjit.EcomKart.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,27 +11,17 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class  CartItem {
+public class VerificationCode {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @ManyToOne
-    @JsonIgnore
-    private Cart cart;
-    @ManyToOne
-    private Product product;
 
-    private String size;
+    private String otp;
 
-    private int quantity=1;
-
-    private Integer mrpPrice;
-
-    private Integer sellingPrice;
-
-    private Long userId;
-
-
-
-
+    private String email;
+    @OneToOne
+    private User user;
+    @OneToOne
+    private Seller seller;
 }

@@ -1,38 +1,30 @@
 package com.ranjit.EcomKart.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class  CartItem {
+public class Transaction {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToOne
-    @JsonIgnore
-    private Cart cart;
+    private User customer;
+    @OneToOne
+    private Order order;
     @ManyToOne
-    private Product product;
+    private Seller seller;
 
-    private String size;
-
-    private int quantity=1;
-
-    private Integer mrpPrice;
-
-    private Integer sellingPrice;
-
-    private Long userId;
-
-
-
+    private LocalDateTime date= LocalDateTime.now();
 
 }
