@@ -13,8 +13,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class BusinessDetails {
 
-
-
     private String businessName;
     private String businessEmail;
     private String businessMobile;
